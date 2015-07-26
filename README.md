@@ -1,6 +1,6 @@
-# Cron that triggers a PHP Worker via German
+# Cron with PHP and Gearman library
 
-This is a specialized Docker build for running cron whose only purpose is to trigger Gearman jobs via PHP client.
+All it does is run cron. 
 
 Customize `my-cron.conf` for your needs.
 
