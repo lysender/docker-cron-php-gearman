@@ -34,13 +34,19 @@ RUN yum -y install git \
     php-soap \
     php-xml \
     php-xmlrpc \
-    php-pecl-gearman && yum clean all
+    php-pecl-gearman \
+    python \
+    python-devel \
+    python-pip \
+    mercurial && yum clean all
+
+# Install dev cron
+RUN pip install -e hg+https://bitbucket.org/dbenamy/devcron#egg=devcron
 
 # Configure servicies
-ADD ./start.sh /start.sh
-ADD ./my-cron.conf /etc/cron.d/my-cron
+ADD ./my-cron.conf /cron/crontab
 
-RUN chmod 755 /start.sh
+VOLUME ["/cron"]
 
-CMD ["/bin/bash", "/start.sh"]
+CMD ["devcron.py", "/cron/crontab"]
 
