@@ -2,5 +2,5 @@
 
 All it does is run cron. 
 
-Customize `my-cron.conf` for your needs.
+Extend and customize `cron.conf` for your needs.
 
